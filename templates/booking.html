@@ -145,7 +145,7 @@
                                 <!-- City -->
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select bg-white border-0" id="city"  name="city" onchange="updateTouristPlaces()">
+                                        <select class="form-select bg-white border-0" id="city"  name="city" onchange="updateProperties()">
                                             <option value="">Select City</option>
                                             {% for district in districts %}
                                                 <option value="{{ district.id }}" {% if district.id == booking.city.id %}selected{% endif %}>
@@ -159,13 +159,13 @@
                                 
                                 
                         
-                                <!-- Tourist Places -->
+                                <!-- Property -->
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select bg-white border-0" id="touristPlaces" name="tourist_place">
-                                            <option value="">Select Destination </option>
+                                        <select class="form-select bg-white border-0" id="properties" name="property">
+                                            <option value="">Select Property</option>
                                         </select>
-                                        <label for="touristPlaces">Destinations </label>
+                                        <label for="properties">Property</label>
                                     </div>
                                 </div>
                         
@@ -308,28 +308,28 @@
                 }
             }
         
-            function updateTouristPlaces() {
+            function updateProperties() {
     var district = document.getElementById('city').value; // Get the selected district
-    var touristPlaceSelect = document.getElementById('touristPlaces'); // Tourist places dropdown
+    var propertySelect = document.getElementById('properties'); // Properties dropdown
 
-    // Reset the tourist places dropdown
-    touristPlaceSelect.innerHTML = '<option value="">Select Tourist Place</option>';
+    // Reset the properties dropdown
+    propertySelect.innerHTML = '<option value="">Select Property</option>';
 
     if (district) {
-        // Fetch tourist places via AJAX
-        fetch(`/get_tourist_places/?district=${district}`) // Send district as a query parameter
+        // Fetch properties via AJAX
+        fetch(`/get_properties_for_booking/?district=${district}`) // Send district as a query parameter
             .then(response => response.json()) // Parse the JSON response
             .then(data => {
-                // Populate the tourist places dropdown
-                data.forEach(function(place) {
+                // Populate the properties dropdown
+                data.forEach(function(prop) {
                     var option = document.createElement('option');
-                    option.value = place.id;
-                    option.textContent = place.name;
-                    touristPlaceSelect.appendChild(option);
+                    option.value = prop.id;
+                    option.textContent = prop.name;
+                    propertySelect.appendChild(option);
                 });
             })
             .catch(error => {
-                console.error('Error fetching tourist places:', error);
+                console.error('Error fetching properties:', error);
             });
     }
 }

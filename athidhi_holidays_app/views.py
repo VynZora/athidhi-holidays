@@ -43,6 +43,15 @@ def package_details(request, id):
     package = get_object_or_404(Package, id=id)
     return render(request, 'package_details.html', {'package': package})
 
+def properties(request):
+    destinations = Destination.objects.prefetch_related('nearby_properties').all()
+    all_properties = Property.objects.prefetch_related('images').all()
+    return render(request, 'properties.html', {'destinations': destinations, 'all_properties': all_properties})
+
+def property_details(request, id):
+    property_obj = get_object_or_404(Property, id=id)
+    return render(request, 'property_details.html', {'property': property_obj})
+
 def blogs(request):
     blogs = Blog.objects.all().order_by('-created_date')
     return render(request, 'blogs.html', {'blogs': blogs})
@@ -123,6 +132,12 @@ def get_tourist_places(request):
     district_id = request.GET.get('district')
     places = Destination.objects.filter(district_id=district_id)
     data = list(places.values('id', 'name'))
+    return JsonResponse(data, safe=False)
+
+def get_properties_for_booking(request):
+    district_id = request.GET.get('district')
+    properties = Property.objects.filter(destinations__district_id=district_id).distinct()
+    data = list(properties.values('id', 'name'))
     return JsonResponse(data, safe=False)
 
 

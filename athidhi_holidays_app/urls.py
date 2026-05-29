@@ -10,6 +10,8 @@ urlpatterns = [
         path('destination/<int:id>/', views.destination_details, name= 'destination_details'),
         path('packages', views.packages, name= 'packages'),
         path('package/<int:id>/', views.package_details, name= 'package_details'),
+        path('properties', views.properties, name= 'properties'),
+        path('property/<int:id>/', views.property_details, name= 'property_details'),
         path('blogs/', views.blogs, name='blogs'),
         path('blogs/<int:blog_id>/', views.blog_details, name='blog_details'),
         path('gallery', views.gallery, name= 'gallery'),
@@ -17,6 +19,7 @@ urlpatterns = [
         path('booking', views.booking, name= 'booking'),
         path('get_related_packages/', views.get_related_packages, name='get_related_packages'),
         path('get_tourist_places/', views.get_tourist_places, name='get_tourist_places'),
+        path('get_properties_for_booking/', views.get_properties_for_booking, name='get_properties_for_booking'),
 
         
         # Admin Login

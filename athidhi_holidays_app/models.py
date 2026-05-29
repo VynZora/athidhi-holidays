@@ -60,7 +60,7 @@ class Booking(models.Model):
     package_category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='bookings', null=True, blank=True)
     related_package = models.ForeignKey(Package, on_delete=models.SET_NULL, null=True, blank=True, related_name='bookings')
     city = models.ForeignKey(District, on_delete=models.CASCADE, related_name='bookings', null=True, blank=True)
-    tourist_place = models.ForeignKey(Destination, on_delete=models.SET_NULL, null=True, blank=True, related_name='bookings')
+    property = models.ForeignKey('Property', on_delete=models.SET_NULL, null=True, blank=True, related_name='bookings')
     adults = models.PositiveIntegerField()
     children = models.PositiveIntegerField(default=0)
     special_request = models.TextField(blank=True, null=True)

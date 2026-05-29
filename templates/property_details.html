@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ property.name }} Details - Kerala Tours Planner{% endblock %}
+{% block content %}
+
+        <!-- Custom Style for Destination Pill -->
+        <style>
+            .btn-destination-pill {
+                border-color: #A67232;
+                color: #A67232;
+                background-color: transparent;
+                transition: all 0.3s ease;
+            }
+            .btn-destination-pill:hover {
+                background: linear-gradient(to right, #A67232, #C9A84C);
+                color: #ffffff !important;
+                border-color: transparent;
+            }
+        </style>
+
+        <!-- Hero Header Start -->
+        <div class="container-fluid" 
+        style="background: linear-gradient(rgba(23, 23, 24, 0.5), rgba(23, 23, 24, 0.5)), 
+               url('{% if property.images.first %}{{ property.images.first.image.url }}{% else %}{% static 'img/placeholder.jpg' %}{% endif %}');
+               background-position: center center;
+               background-repeat: no-repeat;
+               background-size: cover;
+               background-attachment: fixed;
+               padding: 150px 0 50px;">
+   
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h3 class="text-white display-3 mb-4">{{ property.name }}</h3>
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a style="color: #fff!important;" href="{% url 'index' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a style="color: #fff!important;" href="{% url 'properties' %}">Properties</a></li>
+                    <li class="breadcrumb-item active" style="color: #b1a4a4;">{{ property.name }} Details</li>
+                </ol>    
+            </div>
+        </div>
+        <!-- Hero Header End -->
+
+        <!-- Property Details Start -->
+        <div class="container-fluid about py-5">
+            <div class="container py-5">
+                <div class="row g-5 text-lg-start">
+                    <!-- Image Section -->
+                    <div class="col-12 col-lg-5 order-lg-1">
+                        <div class="h-100">
+                            {% if property.images.count > 1 %}
+                                <div id="propertyImageCarousel" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner rounded shadow-lg">
+                                        {% for p_image in property.images.all %}
+                                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                            <img style="object-fit: cover; height: 400px;" src="{{ p_image.image.url }}" class="d-block w-100" alt="{{ property.name }}">
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#propertyImageCarousel" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#propertyImageCarousel" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            {% elif property.images.first %}
+                                <img style="object-fit: cover; height: 400px;" src="{{ property.images.first.image.url }}" class="img-fluid rounded shadow-lg w-100" alt="{{ property.name }}">
+                            {% else %}
+                                <img style="object-fit: cover; height: 400px;" src="{% static 'img/placeholder.jpg' %}" class="img-fluid rounded shadow-lg w-100" alt="{{ property.name }}">
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <!-- Description Section -->
+                    <div class="col-12 col-lg-6 order-lg-2">
+                        <h1 class="mb-4">{{ property.name }}</h1>
+                        {% if property.price_per_night %}
+                        <h4 class="mb-4" style="color: #A67232;">Price: ₹{{ property.price_per_night }} / night</h4>
+                        {% endif %}
+                        {% if property.address %}
+                        <p class="mb-4"><i class="fas fa-map-marker-alt me-2 text-primary" style="color: #A67232 !important;"></i>{{ property.address }}</p>
+                        {% endif %}
+                        <div class="mb-4">{{ property.description|safe }}</div>
+                        
+                        {% if property.destinations.all %}
+                        <div class="mb-4">
+                            <h5 class="mb-3">Nearby Destinations</h5>
+                            <div class="d-flex flex-wrap">
+                                {% for dest in property.destinations.all %}
+                                <a href="{% url 'destination_details' dest.id %}" class="btn btn-destination-pill btn-sm rounded-pill px-3 py-2 m-1">
+                                    <i class="fas fa-map-pin me-1"></i> {{ dest.name }}
+                                </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        
+                        <a class="btn rounded-pill py-3 px-5 mt-3" style="background: linear-gradient(to right, #A67232, #C9A84C); border: none; color: #fff;" href="https://wa.me/919995551209">Enquire Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Property Details End -->
+        
+{% endblock %}

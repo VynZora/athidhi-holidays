@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Properties - Kerala Tours Planner{% endblock %}
+{% block meta_description %}
+<meta content="Explore our top properties for a memorable stay in Kerala. Discover hotels, resorts, and houseboats tailored to your preferences." name="description">
+{% endblock %}
+{% block content %}
+
+        <!-- Header Start -->
+        <div class="container-fluid bg-breadcrumb">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h3 class="text-white display-3 mb-4">PROPERTIES</h3>
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                    <li class="breadcrumb-item active" style="color: #b1a4a4;">Properties</li>
+                </ol>    
+            </div>
+        </div>
+        <!-- Header End -->
+
+        <!-- Properties Start -->
+        <div class="container-fluid destination py-5">
+            <div class="container py-5">
+                <div class="mx-auto text-center mb-5" style="max-width: 900px;">
+                    <h5 class="section-title px-3">Properties</h5>
+                    <h1 class="mb-0">Our Properties</h1>
+                </div>
+                
+                <div class="tab-class text-center">
+                    <div class="tab-content">
+                        <div id="tab-all" class="tab-pane fade show p-0 active">
+                            <div class="row g-4">
+                                {% for property in all_properties %}
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="destination-img" style="height: 300px;">
+                                        {% if property.images.first %}
+                                        <img class="img-fluid rounded w-100" src="{{ property.images.first.image.url }}" style="height: 300px; object-fit: cover;" alt="{{ property.name }}">
+                                        {% else %}
+                                        <img class="img-fluid rounded w-100" src="{% static 'img/placeholder.jpg' %}" style="height: 300px; object-fit: cover;" alt="{{ property.name }}">
+                                        {% endif %}
+                                        
+                                        <div class="destination-overlay p-4" style="background: rgba(8, 23, 58, 0.6);">
+                                            <h4 class="text-white mb-2">{{ property.name }}</h4>
+                                            <a href="{% url 'property_details' property.id %}" class="rounded-pill text-white btn" style="background: linear-gradient(to right, #A67232, #C9A84C); border: none; padding: 10px 20px;">
+                                                View Details
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% empty %}
+                                <p>No properties available.</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Properties End -->
+
+{% endblock %}
