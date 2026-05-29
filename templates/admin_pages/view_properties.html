@@ -1,0 +1,63 @@
+{% extends "admin_pages/base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="col-lg-12 stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Properties</h4>
+            <div class="table-responsive">
+                <table class="table table-bordered" style="width: 1400px;">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Price</th>
+                            <th>Nearby Destinations</th>
+                            <th>Images</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for property in properties %}
+                        <tr>
+                            <td>{{ property.name }}</td>
+                            <td>{{ property.address|default:"-" }}</td>
+                            <td>{{ property.price_per_night|default:"-" }}</td>
+                            <td>
+                                {% for dest in property.destinations.all %}
+                                <span class="badge badge-info">{{ dest.name }}</span>
+                                {% empty %}
+                                -
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for img in property.images.all %}
+                                <img src="{{ img.image.url }}" style="width: 60px; height: 60px; margin: 2px;">
+                                {% empty %}
+                                No images
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <a href="{% url 'update_property' property.id %}" class="btn btn-warning btn-sm mb-1">
+                                    <i class="mdi mdi-cloud-upload"></i> Update
+                                </a>
+                                <a href="{% url 'delete_property' property.id %}" class="btn btn-danger btn-sm mb-1">
+                                    <i class="mdi mdi-delete"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-center">No properties available.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -85,7 +85,11 @@ urlpatterns = [
         path('update_packages/<int:id>/',views.update_packages,name='update_packages'),
         path('delete_packages/<int:id>/',views.delete_packages,name='delete_packages'),
 
-
+        path('add_property', views.add_property, name='add_property'),
+        path('view_properties', views.view_properties, name='view_properties'),
+        path('update_property/<int:id>/', views.update_property, name='update_property'),
+        path('delete_property/<int:id>/', views.delete_property, name='delete_property'),
+        path('delete_property_image/<int:id>/', views.delete_property_image, name='delete_property_image'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 handler404 = 'athidhi_holidays_app.views.page_404'

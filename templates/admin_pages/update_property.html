@@ -1,0 +1,64 @@
+{% extends "admin_pages/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Update Property</h4>
+          <form class="forms-sample" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" class="form-control" name="name" value="{{ property.name }}" required>
+              </div>
+              <div class="form-group">
+                  <label>Description</label>
+                  <textarea class="form-control" name="description" rows="5">{{ property.description }}</textarea>
+              </div>
+              <div class="form-group">
+                  <label>Address</label>
+                  <textarea class="form-control" name="address" rows="3">{{ property.address }}</textarea>
+              </div>
+              <div class="form-group">
+                  <label>Price Per Night (optional)</label>
+                  <input type="number" step="0.01" class="form-control" name="price_per_night" value="{{ property.price_per_night|default:'' }}">
+              </div>
+              <div class="form-group">
+                  <label>Nearby Destinations</label>
+                  <div class="border rounded p-3" style="max-height: 180px; overflow-y: auto; border: 1px solid #ced4da; background-color: #f8f9fa;">
+                      {% for destination in destinations %}
+                      <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-2">
+                          <label class="mb-0" for="dest_{{ destination.id }}" style="cursor: pointer; width: 100%;">
+                              {{ destination.name }}
+                          </label>
+                          <input type="checkbox" name="destinations" value="{{ destination.id }}" id="dest_{{ destination.id }}" {% if destination in property.destinations.all %}checked{% endif %} style="width: 18px; height: 18px; cursor: pointer;">
+                      </div>
+                      {% endfor %}
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label>Current Images</label><br>
+                  {% for img in property.images.all %}
+                  <div style="display: inline-block; margin: 5px;">
+                      <img src="{{ img.image.url }}" style="width: 80px; height: 80px;"><br>
+                      <a href="{% url 'delete_property_image' img.id %}" class="btn btn-danger btn-sm mt-1">Remove</a>
+                  </div>
+                  {% empty %}
+                  <p>No images uploaded yet.</p>
+                  {% endfor %}
+              </div>
+              <div class="form-group">
+                  <label>Upload New Images</label>
+                  <input type="file" class="form-control-file" name="images" accept="image/*" multiple>
+              </div>
+              <button type="submit" class="btn btn-primary me-2">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

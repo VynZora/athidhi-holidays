@@ -110,3 +110,22 @@ class GalleryImage(models.Model):
 
     def __str__(self):
         return f"Image for {self.gallery.folder}"
+
+
+class Property(models.Model):
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+    address = models.TextField(blank=True, null=True)
+    price_per_night = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    destinations = models.ManyToManyField(Destination, blank=True, related_name="nearby_properties")
+    created_date = models.DateTimeField(default=now)
+
+    def __str__(self):
+        return self.name
+
+class PropertyImage(models.Model):
+    property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name="images")
+    image = models.ImageField(upload_to="property_images/")
+
+    def __str__(self):
+        return f"Image for {self.property.name}"

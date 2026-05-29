@@ -10,7 +10,7 @@ import json
 from django.conf import settings
 
 
-from .models import ContactModel, District, Destination, ClientReview, Gallery, Folder, GalleryImage, Blog, Category, Package, Booking
+from .models import ContactModel, District, Destination, ClientReview, Gallery, Folder, GalleryImage, Blog, Category, Package, Booking, Property, PropertyImage
 from .forms import ContactModelForm, DestinationForm, ClientReviewForm, GalleryForm, FolderForm, BlogForm, DistrictForm, CategoryForm, PackageForm, BookingForm
 
 
@@ -555,3 +555,70 @@ def delete_packages(request,id):
     #  404 view\
 def page_404(request, exception):
     return render(request, '404.html', status=404)
+
+@login_required(login_url="user_login")
+def add_property(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        description = request.POST.get("description")
+        address = request.POST.get("address")
+        price_per_night = request.POST.get("price_per_night") or None
+        destination_ids = request.POST.getlist("destinations")
+        images = request.FILES.getlist("images")
+
+        property_obj = Property.objects.create(
+            name=name,
+            description=description,
+            address=address,
+            price_per_night=price_per_night,
+        )
+        property_obj.destinations.set(destination_ids)
+
+        for image in images:
+            PropertyImage.objects.create(property=property_obj, image=image)
+
+        return redirect("view_properties")
+    
+    destinations = Destination.objects.all()
+    return render(request, "admin_pages/add_property.html", {"destinations": destinations})
+
+@login_required(login_url="user_login")
+def view_properties(request):
+    properties = Property.objects.prefetch_related("destinations", "images").all()
+    return render(request, "admin_pages/view_properties.html", {"properties": properties})
+
+@login_required(login_url="user_login")
+def update_property(request, id):
+    property_obj = get_object_or_404(Property, id=id)
+    if request.method == "POST":
+        property_obj.name = request.POST.get("name")
+        property_obj.description = request.POST.get("description")
+        property_obj.address = request.POST.get("address")
+        property_obj.price_per_night = request.POST.get("price_per_night") or None
+        destination_ids = request.POST.getlist("destinations")
+        property_obj.destinations.set(destination_ids)
+        property_obj.save()
+
+        images = request.FILES.getlist("images")
+        for image in images:
+            PropertyImage.objects.create(property=property_obj, image=image)
+
+        return redirect("view_properties")
+
+    destinations = Destination.objects.all()
+    return render(request, "admin_pages/update_property.html", {
+        "property": property_obj,
+        "destinations": destinations,
+    })
+
+@login_required(login_url="user_login")
+def delete_property(request, id):
+    property_obj = get_object_or_404(Property, id=id)
+    property_obj.delete()
+    return redirect("view_properties")
+
+@login_required(login_url="user_login")
+def delete_property_image(request, id):
+    image = get_object_or_404(PropertyImage, id=id)
+    image.delete()
+    return redirect("update_property", id=image.property.id)
