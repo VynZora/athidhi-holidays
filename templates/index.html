@@ -189,6 +189,11 @@
     font-size: 1rem;
 }
 
+.carousel-control-prev,
+.carousel-control-next {
+    z-index: 20;
+}
+
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     background-color: rgba(0, 0, 0, 0.5);
@@ -196,17 +201,32 @@
 }
 
 @media (max-width: 768px) {
+    .carousel-caption {
+        width: 90%;
+        bottom: auto;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .carousel-caption h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
     .carousel-caption h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
         color: #fff;
+        margin-bottom: 0.5rem;
     }
 
     .carousel-caption p {
         font-size: 0.9rem;
+        margin-bottom: 1rem;
     }
 
     .carousel-caption .btn {
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 1.5rem;
     }
 }
 
