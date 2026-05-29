@@ -147,49 +147,21 @@
       </a>
     </li>
 
-  
-
-
- 
-
-    <li class="nav-item nav-category">Client Reviews</li>
+    <li class="nav-item nav-category">Properties</li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="collapse" href="#blog" aria-expanded="false" aria-controls="blog">
-        <i class="menu-icon mdi mdi-account-multiple"></i>
-        <span class="menu-title">Client Reviews</span>
+      <a class="nav-link" data-bs-toggle="collapse" href="#properties" aria-expanded="false" aria-controls="properties">
+        <i class="menu-icon mdi mdi-home-city"></i>
+        <span class="menu-title">Properties</span>
         <i class="menu-arrow"></i>
       </a>
-      <div class="collapse" id="blog">
+      <div class="collapse" id="properties">
         <ul class="nav flex-column sub-menu">
-
-          <li class="nav-item"> <a class="nav-link" href="{% url 'add_client_review' %}"> Add Client Reviews</a></li>
-          <li class="nav-item"> <a class="nav-link" href="{% url 'view_client_reviews' %}"> View Clients Reviews</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'add_property' %}"> Add Property</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'view_properties' %}"> View Properties</a></li>
         </ul>
       </div>
     </li>
 
-
-   
-    <li class="nav-item nav-category">Gallery</li>
-    <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="collapse" href="#contact1" aria-expanded="false" aria-controls="contact">
-        <i class="menu-icon mdi mdi-image-multiple"></i>
-        <span class="menu-title">Gallery</span>
-        <i class="menu-arrow"></i>
-      </a>
-      <div class="collapse" id="contact1">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="{% url 'add_folders' %}"> Add Folders</a></li>
-          <li class="nav-item"> <a class="nav-link" href="{% url 'view_folders' %}"> View Folders</a></li>
-          <li class="nav-item"> <a class="nav-link" href="{% url 'add_images' %}"> Add Images</a></li>
-          <li class="nav-item"> <a class="nav-link" href="{% url 'view_images' %}"> View Images</a></li>
-        </ul>
-      </div>
-    </li>
-
-
-
-    
     <li class="nav-item nav-category">Destination</li>
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#contact123" aria-expanded="false" aria-controls="contact">
@@ -224,22 +196,6 @@
       </div>
     </li>
 
-    <li class="nav-item nav-category">Properties</li>
-    <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="collapse" href="#properties" aria-expanded="false" aria-controls="properties">
-        <i class="menu-icon mdi mdi-home-city"></i>
-        <span class="menu-title">Properties</span>
-        <i class="menu-arrow"></i>
-      </a>
-      <div class="collapse" id="properties">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="{% url 'add_property' %}"> Add Property</a></li>
-          <li class="nav-item"> <a class="nav-link" href="{% url 'view_properties' %}"> View Properties</a></li>
-        </ul>
-      </div>
-    </li>
-
-
     <li class="nav-item nav-category">Blogs</li>
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#contact1234" aria-expanded="false" aria-controls="contact">
@@ -255,6 +211,37 @@
       </div>
     </li>
 
+    <li class="nav-item nav-category">Gallery</li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#contact1" aria-expanded="false" aria-controls="contact">
+        <i class="menu-icon mdi mdi-image-multiple"></i>
+        <span class="menu-title">Gallery</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="contact1">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="{% url 'add_folders' %}"> Add Folders</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'view_folders' %}"> View Folders</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'add_images' %}"> Add Images</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'view_images' %}"> View Images</a></li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item nav-category">Client Reviews</li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#blog" aria-expanded="false" aria-controls="blog">
+        <i class="menu-icon mdi mdi-account-multiple"></i>
+        <span class="menu-title">Client Reviews</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="blog">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="{% url 'add_client_review' %}"> Add Client Reviews</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'view_client_reviews' %}"> View Clients Reviews</a></li>
+        </ul>
+      </div>
+    </li>
 
     <li class="nav-item nav-category">Bookings</li>
     <li class="nav-item">
@@ -270,9 +257,6 @@
       </div>
     </li>
 
-
-
-    
     <li class="nav-item nav-category">Contact US</li>
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#contact" aria-expanded="false" aria-controls="contact">
@@ -287,7 +271,6 @@
       </div>
     </li>
   
-
     <li class="nav-item nav-category">Sign Out</li>
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#chatbot1" aria-expanded="false" aria-controls="chatbot">
@@ -298,8 +281,6 @@
       <div class="collapse" id="chatbot1">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="logout_user">Sign Out</a></li>
-          <!-- <li class="nav-item"> <a class="nav-link" href="../pages/ui-features/dropdowns.html">Dropdowns</a></li>
-          <li class="nav-item"> <a class="nav-link" href="../pages/ui-features/typography.html">Typography</a></li> -->
         </ul>
       </div>
     </li>
