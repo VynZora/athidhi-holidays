@@ -47,7 +47,7 @@
         position: relative;
         display: inline-block;
         text-transform: uppercase;
-        color: #3d5e53;
+        color: #C9A84C;
     }
     .testimonial-carousel .owl-nav .owl-prev,
     .testimonial-carousel .owl-nav .owl-next {
@@ -59,14 +59,14 @@
 
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border" style="width: 3rem; height: 3rem; color:#0a583d;" role="status">
+        <div class="spinner-border" style="width: 3rem; height: 3rem; color:#A67232;" role="status">
             <span class="sr-only">Loading...</span>
         </div>
     </div>
     <!-- Spinner End -->
 
     <!-- Topbar Start -->
-    <div class="container-fluid px-5 d-none d-lg-block" style="background: linear-gradient(560deg, #022d1e, #013d28, #024c34);">
+    <div class="container-fluid px-5 d-none d-lg-block" style="background: linear-gradient(560deg, #0D2611, #163a0e, #0D2611);">
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
@@ -83,7 +83,7 @@
 
     <!-- Navbar & Hero Start -->
     <div class="container-fluid position-relative p-0">
-        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-1" style="background: linear-gradient(100deg, #022d1e, #013d28, #024c34);">
+        <nav class="navbar navbar-glass navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-1">
             <a href="{% url 'index' %}" class="navbar-brand p-0">
                 <div style="display: flex; align-items: center;"><img src="{% static 'logo-left.png' %}" alt="Logo Left" style="height: 115px; object-fit: contain; margin-right: 0px; padding: 0;"><img src="{% static 'logo-r.png' %}" alt="Logo Right" style="height: 115px; object-fit: contain; padding: 0;"></div>
             </a>
@@ -182,7 +182,7 @@
     
     <style>
         .whatsapp-btn {
-            background-color: #0a583d;
+            background-color: #A67232;
             color: #fff !important;
             position: fixed;
             right: 30px;
@@ -204,7 +204,7 @@
             position: absolute;
             width: 60px;
             height: 60px;
-            border: 2px solid #0a583d;
+            border: 2px solid #A67232;
             border-radius: 50%;
             animation: wave 2s infinite;
             opacity: 0.7;
@@ -224,6 +224,29 @@
                 opacity: 0;
             }
         }
+
+        .navbar-glass {
+            background: rgba(13, 38, 17, 0.25) !important;
+            backdrop-filter: blur(7px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .navbar-glass.scrolled {
+            background: linear-gradient(100deg, #0D2611, #163a0e, #0D2611) !important;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-light .navbar-nav .nav-link:hover,
+        .navbar-light .navbar-nav .nav-link.active {
+            color: #C9A84C !important;
+            transition: color 0.3s ease;
+        }
     </style>
     
     <!-- JavaScript Libraries -->
@@ -239,5 +262,15 @@
 
     {% block extra_js %}
     {% endblock %}
+
+    <script>
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 45) {
+                $('.navbar').addClass('sticky-top shadow-sm scrolled').css('min-height', '100px');
+            } else {
+                $('.navbar').removeClass('sticky-top shadow-sm scrolled').css('min-height', '');
+            }
+        });
+    </script>
 </body>
 </html>
