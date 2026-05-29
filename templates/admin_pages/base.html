@@ -22,7 +22,10 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="{% static 'admin_static/assets/css/vertical-layout-light/style.css' %}">
   <!-- endinject -->
-  <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon" style="background-color: black;">
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
   <style>
     * {
   margin:0px;
@@ -91,7 +94,7 @@
     </div>
     <div>
       <!-- <a class="navbar-brand brand-logo" href="{% url 'dashboard' %}">
-        <img src="{% static 'img/logo6.png' %}" alt="logo" style="height: 40px; width: 300px; background: linear-gradient(100deg, #022d1e, #013d28, #024c34);" class=" border shadow-sm mb-3">
+        <div style="display: flex; align-items: center;"><img src="{% static 'logo-left.png' %}" alt="Logo Left" style="height: 115px; object-fit: contain; margin-right: 0px; padding: 0;"><img src="{% static 'logo-r.png' %}" alt="Logo Right" style="height: 115px; object-fit: contain; padding: 0;"></div>
       </a> -->
     
     </div>
