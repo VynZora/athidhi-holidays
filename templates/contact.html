@@ -83,7 +83,8 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn  w-100 py-3" style="background: linear-gradient(100deg, #022d1e, #013d28, #024c34); color: #fff;" type="submit">Send Message</button>
+                                    <div class="g-recaptcha mb-3" data-sitekey="{{ RECAPTCHA_SITE_KEY }}" data-theme="light"></div>
+                                    <button class="btn  w-100 py-3" style="background: linear-gradient(100deg, #A67232, #C9A84C, #A67232); color: #fff;" type="submit">Send Message</button>
                                 </div>
                             </div>
                         </form>
@@ -108,7 +109,8 @@
         </div>
         <!-- Contact End -->
 
-    
+{% endblock %}
 
-        
+{% block extra_js %}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {% endblock %}

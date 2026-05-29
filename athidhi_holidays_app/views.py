@@ -4,6 +4,10 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
 import random
+import urllib.request
+import urllib.parse
+import json
+from django.conf import settings
 
 
 from .models import ContactModel, District, Destination, ClientReview, Gallery, Folder, GalleryImage, Blog, Category, Package, Booking
@@ -57,12 +61,36 @@ def contact(request):
     if request.method == 'POST':
         form = ContactModelForm(request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Your message has been successfully submitted.')
-            return redirect('contact')
+            recaptcha_response = request.POST.get('g-recaptcha-response')
+            url = 'https://www.google.com/recaptcha/api/siteverify'
+            values = {
+                'secret': settings.RECAPTCHA_SECRET_KEY,
+                'response': recaptcha_response
+            }
+            data = urllib.parse.urlencode(values).encode('utf-8')
+            req = urllib.request.Request(url, data=data)
+            
+            try:
+                response = urllib.request.urlopen(req)
+                result = json.loads(response.read().decode())
+                
+                if result['success']:
+                    form.save()
+                    messages.success(request, 'Your message has been successfully submitted.')
+                    return redirect('contact')
+                else:
+                    messages.error(request, 'Invalid reCAPTCHA. Please try again.')
+            except Exception as e:
+                messages.error(request, 'Error validating reCAPTCHA. Please try again later.')
+        else:
+            messages.error(request, 'Please correct the errors below.')
     else:
         form = ContactModelForm()
-    return render(request, 'contact.html', {'form': form})
+        
+    return render(request, 'contact.html', {
+        'form': form,
+        'RECAPTCHA_SITE_KEY': getattr(settings, 'RECAPTCHA_SITE_KEY', '')
+    })
 
 
 def booking(request):

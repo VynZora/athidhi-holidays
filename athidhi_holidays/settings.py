@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-l8=2&-4bh#=mdl*lq!ob$!*ax+^3)&1fsxjuj!l8cl^0pbg-ln
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['athidhi-holidays.onrender.com','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -156,3 +156,7 @@ MESSAGE_TAGS = {
     messages.WARNING: 'warning',
     messages.ERROR: 'danger',
 }
+
+# RECAPTCHA
+RECAPTCHA_SITE_KEY = "6LdjNAItAAAAAJEq_sBIhLOKoBl89mqyY1t5KvYY"
+RECAPTCHA_SECRET_KEY = "6LdjNAItAAAAAApg_wjkeR4MzSi8dqV0rswLkFla"
