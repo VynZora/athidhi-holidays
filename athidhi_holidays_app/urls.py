@@ -20,7 +20,7 @@ urlpatterns = [
 
         
         # Admin Login
-        path('login',views.user_login,name='user_login'),
+        path('login/',views.user_login,name='user_login'),
         path('logout_user', views.logout_user, name='logout_user'),
 
         # admin dashboard
