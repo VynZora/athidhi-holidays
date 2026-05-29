@@ -16,6 +16,7 @@
                             <th>Phone</th>
                             <th>Email</th>
                             <th>Message</th>
+                            <th>Date</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -28,6 +29,7 @@
                             <td style="max-width: 200px; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
                                 {{ contact.message }}
                             </td>
+                            <td>{{ contact.created_at|date:"M d, Y" }}</td>
                             <td>
                                 <a href="{% url 'delete_contact' contact.id %}" class="btn btn-danger btn-sm">
                                     <i class="mdi mdi-delete" aria-hidden="true"></i> Delete
