@@ -10,13 +10,12 @@
 
             <!-- Carousel Start -->
             <div class="carousel-container">
-                <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
                         <li data-bs-target="#videoCarousel" data-bs-slide-to="0" class="active"></li>
                         <li data-bs-target="#videoCarousel" data-bs-slide-to="1"></li>
                         <li data-bs-target="#videoCarousel" data-bs-slide-to="2"></li>
-                        <li data-bs-target="#videoCarousel" data-bs-slide-to="3"></li>
                     </ol>
             
                     <!-- Carousel Content -->
@@ -24,10 +23,7 @@
                         <!-- Slide 1 -->
                         <div class="carousel-item active">
                             <div class="video-slide">
-                                <video autoplay muted loop class="video-background" oncontextmenu="return false;" style="pointer-events: none; user-select: none;">
-                                    <source src="{% static 'videos/s22.mp4' %}" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
+                                <img src="{% static 'img/s1.jpg' %}" class="image-background" alt="...">
                             </div>
                             
                             <div class="carousel-caption">
@@ -48,10 +44,7 @@
                         <!-- Slide 2 -->
                         <div class="carousel-item">
                             <div class="video-slide">
-                                <video autoplay muted loop class="video-background" oncontextmenu="return false;" style="pointer-events: none; user-select: none;">
-                                    <source src="{% static 'videos/s11.mp4' %}" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
+                                <img src="{% static 'img/s2.jpg' %}" class="image-background" alt="...">
                             </div>
                             
                             <div class="carousel-caption">
@@ -72,13 +65,7 @@
                         <!-- Slide 3 -->
                         <div class="carousel-item">
                             <div class="video-slide">
-                                <div class="video-slide">
-                                    <video autoplay muted loop class="video-background" oncontextmenu="return false;" style="pointer-events: none; user-select: none;">
-                                        <source src="{% static 'videos/s44.mp4' %}" type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </div>
-                                
+                                <img src="{% static 'img/s3.jpg' %}" class="image-background" alt="...">
                             </div>
                             <div class="carousel-caption">
                                 <h4 style="color: #fff;">Adventure Awaits</h4>
@@ -94,33 +81,7 @@
                              
                             </div>
                         </div>
-                        <!-- Slide 4 -->
-                        <div class="carousel-item">
-                            <div class="video-slide">
-                                <div class="video-slide">
-                                    <video autoplay muted loop class="video-background" oncontextmenu="return false;" style="pointer-events: none; user-select: none;">
-                                        <source src="{% static 'videos/s555.mp4' %}" type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </div>
-                                
-                            </div>
-                            <div class="carousel-caption">
-                                <h4 style="color: #fff;">Discover the World</h4>
-                                <h1 style="color: #fff;">Your Journey Starts Here</h1>
-                                <p>
-                                    Experience exotic flavors, serene getaways, and breathtaking landscapes with Kerala Tours Planner.
-                                </p>
-                         
-                            
-                                <a class="btn rounded-pill" 
-                                style="background-color: transparent; border-color: #fff; color: #fff;" 
-                                href="{% url 'booking' %}">
-                                Book Now
-                             </a>
-                             
-                            </div>
-                        </div>
+
                     </div>
             
                     <!-- Controls -->
@@ -146,10 +107,23 @@
     height: 100vh;
 }
 
-.video-background {
+.video-slide::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the video fills the screen without distortion */
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3); /* Very light dark overlay */
+    z-index: 1;
+}
+
+.image-background {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center;
+    display: block;
 }
 
 .carousel-caption {
