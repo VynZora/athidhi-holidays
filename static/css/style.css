@@ -246,8 +246,11 @@
     }
     
     .sticky-top.navbar-light {
-        position: relative;
-        background: #fff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
     }
 
     .navbar-light .navbar-brand h1 {
