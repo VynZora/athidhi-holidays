@@ -72,15 +72,15 @@
 
 .btn.btn-primary:hover {
     box-shadow: inset 300px 0 0 0 var(--bs-light) !important;
-    color: #758C23 !important;
+    color: #31a354 !important;
 }
 
 .btn.btn-light {
-    box-shadow: inset 0 0 0 0 #758C23;
+    box-shadow: inset 0 0 0 0 #31a354;
 }
 
 .btn.btn-light:hover {
-    box-shadow: inset 300px 0 0 0 #758C23;
+    box-shadow: inset 300px 0 0 0 #31a354;
     color: var(--bs-light) !important;
 }
 
@@ -97,7 +97,7 @@
     position: relative;
     display: inline-block;
     text-transform: uppercase;
-    color: #758C23;
+    color: #31a354;
 }
 
 .section-title::before {
@@ -108,7 +108,7 @@
     right: 0;
     transform: translateY(-50%);
     margin-right: -50px;
-    border: 1px solid #758C23!important;
+    border: 1px solid #31a354!important;
 }
 
 .section-title::after {
@@ -119,7 +119,7 @@
     left: 0;
     transform: translateY(-50%);
     margin-left: -50px;
-    border: 1px solid #758C23 !important;
+    border: 1px solid #31a354 !important;
 }
 
 
@@ -130,7 +130,7 @@
 
 .topbar {
     padding: 2px 10px 2px 20px;
-    background: #758C23 !important;
+    background: #31a354 !important;
 }
 
 .topbar a,
@@ -140,7 +140,7 @@
 
 .topbar a:hover,
 .topbar a i:hover {
-    color: #758C23 !important;
+    color: #31a354 !important;
 }
 
 
@@ -182,7 +182,7 @@
 }
 
 .sticky-top.navbar-light .navbar-brand h1 {
-    color: #758C23;
+    color: #31a354;
 }
 
 .navbar-light .navbar-brand img {
@@ -218,31 +218,45 @@
 }
 
 .dropdown .dropdown-menu a:hover {
-    background: #758C23;
+    background: #31a354;
     color: #fff;
 }
 
 .navbar .nav-item:hover .dropdown-menu {
     transform: rotateX(0deg);
     visibility: visible;
-    background: #758C23;
+    background: #31a354;
     transition: .5s;
     opacity: 1;
 }
 
 @media (max-width: 991.98px) {
+    .navbar-glass {
+        width: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        box-sizing: border-box;
+    }
+
+    nav.navbar {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    
     .sticky-top.navbar-light {
         position: relative;
         background: #fff;
     }
 
     .navbar-light .navbar-brand h1 {
-        color: #758C23;
+        color: #31a354;
     }
 
     .navbar.navbar-expand-lg .navbar-toggler {
         padding: 10px 20px;
-        border: 1px solid #758C23;
+        border: 1px solid #31a354;
         color: #adabab;
     }
 
@@ -428,7 +442,7 @@
     right: 0;
     transform: translateY(-50%);
     margin-right: -50px;
-    border: 1px solid #758C23 !important;
+    border: 1px solid #31a354 !important;
 }
 /*** About End ***/
 
@@ -439,7 +453,7 @@
 }
 .service .service-content-inner:hover {
     position: relative;
-    background: #758C23 !important;
+    background: #31a354 !important;
 }
 
 .service .service-content-inner .service-content h5,
@@ -481,7 +495,7 @@
     display: flex;
     justify-content: end;
     padding: 20px 20px 0 0;
-    background: rgba(8, 58, 23, 0.6);
+    background: rgba(26, 107, 56, 0.6);
     border-radius: 10px;
     transition: 0.5s;
 
@@ -496,7 +510,7 @@
     padding: 0 0 20px 0;
 }
 .destination .tab-class .nav-item a.active {
-    background: linear-gradient(100deg, #0D2611, #163a0e, #0D2611); !important;
+    background: linear-gradient(100deg, #1a6b38, #31a354, #1a6b38); !important;
 }
 
 .destination .tab-class .nav-item a.active span {
@@ -504,7 +518,7 @@
 }
 
 .destination .tab-class .tab-content .destination-img:hover .search-icon {
-    background: rgba(8, 58, 23, 0.6);
+    background: rgba(26, 107, 56, 0.6);
 }
 
 .destination .tab-class .tab-content .destination-img:hover .destination-overlay {
@@ -585,7 +599,7 @@
     left: 50%; 
     transform: translateX(-50%);
     display: inline-block;
-    background: #758C23;
+    background: #31a354;
     color: var(--bs-white);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px; 
@@ -601,7 +615,7 @@
     top: -50px;
     left: 0;
     padding: 5px 30px;
-    border: 1px solid #758C23;
+    border: 1px solid #31a354;
     border-radius: 30px;
     transition: 0.5s;
 }
@@ -611,21 +625,21 @@
     top: -50px;
     right: 0;
     padding: 5px 30px;
-    border: 1px solid #758C23;
+    border: 1px solid #31a354;
     border-radius: 30px;
     transition: 0.5s;
 }
 
 .packages .packages-carousel .owl-nav .owl-prev i,
 .packages .packages-carousel .owl-nav .owl-next i {
-    color: #758C23;
+    color: #31a354;
     font-size: 17px;
     transition: 0.5s;
 }
 
 .packages .packages-carousel .owl-nav .owl-prev:hover,
 .packages .packages-carousel .owl-nav .owl-next:hover {
-    background: #758C23;
+    background: #31a354;
 }
 
 .packages .packages-carousel .owl-nav .owl-prev:hover i,
@@ -640,7 +654,7 @@
     padding: 0 0 20px 0;
 }
 .ExploreTour .tab-class .nav-item a.active {
-    background: #758C23 !important;
+    background: #31a354 !important;
 }
 
 .ExploreTour .tab-class .nav-item a.active span {
@@ -679,7 +693,7 @@
 }
 
 .ExploreTour #NationalTab-1 .national-item:hover .national-content {
-    background: rgba(8, 58, 23, 0.6);
+    background: rgba(26, 107, 56, 0.6);
 }
 
 .ExploreTour #NationalTab-1 .national-item .national-plus-icon {
@@ -704,7 +718,7 @@
     border-top-left-radius: 20px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 80px;
-    background: #758C23;
+    background: #31a354;
     color: var(--bs-white);
 }
 
@@ -732,7 +746,7 @@
     border-top-left-radius: 20px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 80px;
-    background: #758C23;
+    background: #31a354;
     color: #fff;
 }
 
@@ -752,7 +766,7 @@
 }
 
 .ExploreTour #InternationalTab-2 .international-item:hover .international-content {
-    background: rgba(8, 58, 23, 0.6);
+    background: rgba(26, 107, 56, 0.6);
 }
 
 .ExploreTour #InternationalTab-2 .international-item .international-content .international-info a {
@@ -792,14 +806,14 @@
     width: 15px;
     height: 15px;
     background: var(--bs-light);
-    border: 1px solid #758C23;
+    border: 1px solid #31a354;
     border-radius: 10px;
     transition: 0.5s;
 }
 
 .ExploreTour #InternationalTab-2 .InternationalTour-carousel .owl-dot.active {
     width: 40px;
-    background: #758C23;
+    background: #31a354;
 }
 /*** Explore Tour End ***/
 
@@ -862,14 +876,14 @@
 }
 
 .gallery .gallery-item:hover .gallery-content {
-    background: rgba(8, 58, 23, 0.6);
+    background: rgba(26, 107, 56, 0.6);
 }
 
 .gallery .tab-class .nav-item {
     padding: 0 0 20px 0;
 }
 .gallery .tab-class .nav-item a.active {
-    background: linear-gradient(100deg, #0D2611, #163a0e, #0D2611);  !important;
+    background: linear-gradient(100deg, #1a6b38, #31a354, #1a6b38);  !important;
 }
 
 .gallery .tab-class .nav-item a.active span {
@@ -880,7 +894,7 @@
 
 /*** Tour Booking Start ***/
 .booking {
-    background: linear-gradient(rgba(24, 70, 52, 0.8), rgba(5, 5, 5, 0.8)), url(../img/s2.jpg);
+    background: linear-gradient(rgba(26, 107, 56, 0.8), rgba(5, 5, 5, 0.8)), url(../img/s2.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1060,7 +1074,7 @@
 
 .blog .blog-item .blog-img:hover .blog-img-inner .blog-icon {
     height: 100%;
-    background: rgba(8, 58, 23, 0.6);
+    background: rgba(26, 107, 56, 0.6);
     opacity: 1;
 }
 
@@ -1180,7 +1194,7 @@
 
 /*** Subscribe Start ***/
 .subscribe {
-    background: linear-gradient(rgba(63, 63, 63, 0.6), rgba(13, 38, 17, 0.6)), url(../img/subscribe-img.jpg);
+    background: linear-gradient(rgba(63, 63, 63, 0.6), rgba(26, 107, 56, 0.6)), url(../img/subscribe-img.jpg);
     background-attachment: fixed;
     background-position: center center;
     background-repeat: no-repeat;
@@ -1219,7 +1233,7 @@
 
 /*** Footer Start ***/
 .footer {
-    background: linear-gradient(100deg, #0D2611, #163a0e, #0D2611);
+    background: linear-gradient(100deg, #1a6b38, #31a354, #1a6b38);
 }
 .footer .footer-item a {
     line-height: 30px;
@@ -1237,6 +1251,6 @@
 /*** copyright Start ***/
 .copyright {
     border-top: 1px solid rgba(16, 102, 55, 0.932);
-    background:linear-gradient(100deg, #0D2611, #163a0e, #0D2611); !important;
+    background:linear-gradient(100deg, #1a6b38, #31a354, #1a6b38); !important;
 }
 /*** copyright end ***/
