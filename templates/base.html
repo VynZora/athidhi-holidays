@@ -91,7 +91,7 @@
 
     <!-- Navbar & Hero Start -->
     <div class="container-fluid position-relative p-0">
-        <nav class="navbar navbar-glass navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-1">
+        <nav class="navbar navbar-glass navbar-expand-lg navbar-light px-lg-5 py-3 py-lg-1">
             <a href="{% url 'index' %}" class="navbar-brand p-0">
                 <div style="display: flex; align-items: center;"><img src="{% static 'logo-left.png' %}" alt="Logo Left" class="nav-logo" style="margin-right: 0px; padding: 0;"><img src="{% static 'logo-r.png' %}" alt="Logo Right" class="nav-logo" style="padding: 0;"></div>
             </a>
@@ -260,13 +260,18 @@
         /* Mobile View Navbar Adjustments */
         @media (max-width: 991.98px) {
             .nav-logo {
-                height: 60px !important;
+                height: 85px !important;
             }
             .navbar-glass {
                 background: linear-gradient(100deg, #1a6b38, #31a354, #1a6b38) !important;
                 backdrop-filter: none;
                 -webkit-backdrop-filter: none;
                 border: none;
+                width: 100% !important;
+                margin: 0 !important;
+                border-radius: 0 !important;
+                padding-left: 16px !important;
+                padding-right: 16px !important;
             }
             
             .navbar-collapse {
