@@ -19,7 +19,8 @@ def index(request):
     reviews = ClientReview.objects.all()
     blogs = Blog.objects.all()
     packages = Package.objects.all()
-    return render(request, 'index.html',{'reviews':reviews, 'blogs':blogs, 'packages':packages})
+    properties = Property.objects.prefetch_related('images').all()
+    return render(request, 'index.html',{'reviews':reviews, 'blogs':blogs, 'packages':packages, 'properties':properties})
 
 
 def about(request):

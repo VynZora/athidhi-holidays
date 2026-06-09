@@ -227,13 +227,7 @@
                 </style>
         <!-- Navbar & Hero End -->
 
-         
-       
-      
-       
-            
-        
-        <!-- Packages End -->
+        <!-- Packages Start -->
         <div class="container-fluid packages py-5">
             <div class="container py-5">
                 <div class="mx-auto text-center mb-5" style="max-width: 900px;">
@@ -250,14 +244,13 @@
                             <a href="{% url 'package_details' package.id %}">
                                 <img src="{{ package.image.url }}" class="img-fluid w-100 rounded-top" style="height:250px;" alt="package Image">
                             </a>
-                          
                         </div>
                         <div class="packages-content bg-light">
                             <div class="p-4 pb-0">
                                 <h5 class="mb-0">
                                     <a href="{% url 'package_details' package.id %}" class="text-dark text-decoration-none">{{ package.name }}</a>
                                 </h5>
-                                <!-- <p class="mb-4">{{ package.description|truncatechars:110|safe }}</p> --> <br>
+                                <br>
                             </div>
                             <div class="row rounded-bottom mx-0" style="background: linear-gradient(100deg, #1B4332, #2D6A4F, #1B4332);">
                                 <div class="col-6 text-start px-0">
@@ -268,17 +261,14 @@
                                 </div>
                             </div>
                         </div>
-                      
                     </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
-        
+        <!-- Packages End -->
 
-
-
-
+        <!-- Why Choose Us -->
         <div class="container-fluid py-5" style="background-color: #F1F8F4;">
             <div class="container py-5">
                 <div class="row align-items-center">
@@ -317,13 +307,68 @@
                     <div class="col-lg-6">
                         <div class="position-relative">
                             <img src="{% static 'img/s5.jpg' %}" class="img-fluid rounded shadow-lg" alt="Kerala Tours Planner">
-                       
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
+        <!-- Properties Start -->
+        <div class="container-fluid packages py-5">
+            <div class="container py-5">
+                <div class="mx-auto text-center mb-5" style="max-width: 900px;">
+                    <h5 class="section-title px-3">Our Properties</h5>
+                    <h1 class="mb-4">Featured Properties</h1>
+                    <p class="mb-0">
+                        Explore our handpicked properties across Kerala — from serene hill retreats to coastal getaways, each offering a unique and comfortable stay.
+                    </p>
+                </div>
+                <div class="packages-carousel owl-carousel">
+                    {% for property in properties %}
+                    <div class="packages-item">
+                        <div class="packages-img">
+                            <a href="{% url 'property_details' property.id %}">
+                                {% with property.images.first as first_image %}
+                                    {% if first_image %}
+                                        <img src="{{ first_image.image.url }}" class="img-fluid w-100 rounded-top" style="height:250px; object-fit: cover;" alt="{{ property.name }}">
+                                    {% else %}
+                                        <img src="{% static 'img/s1.jpg' %}" class="img-fluid w-100 rounded-top" style="height:250px; object-fit: cover;" alt="{{ property.name }}">
+                                    {% endif %}
+                                {% endwith %}
+                            </a>
+                        </div>
+                        <div class="packages-content bg-light">
+                            <div class="p-4 pb-0">
+                                <h5 class="mb-0">
+                                    <a href="{% url 'property_details' property.id %}" class="text-dark text-decoration-none">{{ property.name }}</a>
+                                </h5>
+                                {% if property.address %}
+                                    <p class="text-muted mb-0 mt-1" style="font-size: 0.875rem;"><i class="fa fa-map-marker-alt me-1"></i>{{ property.address|truncatechars:50 }}</p>
+                                {% endif %}
+                                <br>
+                            </div>
+                            <div class="row rounded-bottom mx-0" style="background: linear-gradient(100deg, #1B4332, #2D6A4F, #1B4332);">
+                                <div class="col-6 text-start px-0">
+                                    <a href="{% url 'property_details' property.id %}" class="btn text-white py-2 px-4">View Details</a>
+                                </div>
+                                <div class="col-6 text-end px-0">
+                                    <a href="{% url 'booking' %}" class="btn text-white py-2 px-4">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="text-center mt-4">
+                    <a href="{% url 'properties' %}" class="btn rounded-pill py-3 px-5" style="background: linear-gradient(100deg, #1B4332, #2D6A4F, #1B4332); color: #fff;">
+                        View All Properties
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Properties End -->
+
+
       
 
         <div class="container-fluid ExploreTour py-5">
