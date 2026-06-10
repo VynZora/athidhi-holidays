@@ -20,52 +20,63 @@ def index(request):
     blogs = Blog.objects.all()
     packages = Package.objects.all()
     properties = Property.objects.prefetch_related('images').all()
-    return render(request, 'index.html',{'reviews':reviews, 'blogs':blogs, 'packages':packages, 'properties':properties})
+    modal_categories = Category.objects.all()
+    return render(request, 'index.html',{'reviews':reviews, 'blogs':blogs, 'packages':packages, 'properties':properties, 'modal_categories': modal_categories})
 
 
 def about(request):
     reviews = ClientReview.objects.all()
-    return render(request, 'about.html',{'reviews':reviews})
+    modal_categories = Category.objects.all()
+    return render(request, 'about.html',{'reviews':reviews, 'modal_categories': modal_categories})
 
 
 def destinations(request):
     districts = District.objects.prefetch_related('destinations').all()
-    return render(request, 'destinations.html', {'districts': districts})
+    modal_categories = Category.objects.all()
+    return render(request, 'destinations.html', {'districts': districts, 'modal_categories': modal_categories})
 
 def destination_details(request, id):
     destination = get_object_or_404(Destination, id=id)
-    return render(request, 'destination_details.html', {'destination': destination})
+    modal_categories = Category.objects.all()
+    return render(request, 'destination_details.html', {'destination': destination, 'modal_categories': modal_categories})
 
 def packages(request):
     categories = Category.objects.prefetch_related('packages').all()
-    return render(request, 'packages.html', {'categories': categories})
+    modal_categories = Category.objects.all()
+    return render(request, 'packages.html', {'categories': categories, 'modal_categories': modal_categories})
 
 def package_details(request, id):
     package = get_object_or_404(Package, id=id)
-    return render(request, 'package_details.html', {'package': package})
+    modal_categories = Category.objects.all()
+    return render(request, 'package_details.html', {'package': package, 'modal_categories': modal_categories})
 
 def properties(request):
     destinations = Destination.objects.prefetch_related('nearby_properties').all()
     all_properties = Property.objects.prefetch_related('images').all()
-    return render(request, 'properties.html', {'destinations': destinations, 'all_properties': all_properties})
+    modal_categories = Category.objects.all()
+    return render(request, 'properties.html', {'destinations': destinations, 'all_properties': all_properties, 'modal_categories': modal_categories})
 
 def property_details(request, id):
     property_obj = get_object_or_404(Property, id=id)
-    return render(request, 'property_details.html', {'property': property_obj})
+    modal_categories = Category.objects.all()
+    return render(request, 'property_details.html', {'property': property_obj, 'modal_categories': modal_categories})
 
 def blogs(request):
     blogs = Blog.objects.all().order_by('-created_date')
-    return render(request, 'blogs.html', {'blogs': blogs})
+    modal_categories = Category.objects.all()
+    return render(request, 'blogs.html', {'blogs': blogs, 'modal_categories': modal_categories})
 
 def blog_details(request, blog_id):  # Use blog_id here
     blog = get_object_or_404(Blog, pk=blog_id)  # Use blog_id instead of pk
     recent_posts = Blog.objects.exclude(id=blog_id).order_by('-created_date')[:6] 
-    return render(request, 'blog_details.html', {'blog': blog, 'recent_posts':recent_posts})
+    modal_categories = Category.objects.all()
+    return render(request, 'blog_details.html', {'blog': blog, 'recent_posts':recent_posts, 'modal_categories': modal_categories})
 
 def gallery(request):
     folders = Folder.objects.prefetch_related('galleries')
     all_images = GalleryImage.objects.all()
-    return render(request, 'gallery.html', {'folders': folders, 'all_images': all_images})
+    modal_categories = Category.objects.all()
+    return render(request, 'gallery.html', {'folders': folders, 'all_images': all_images, 'modal_categories': modal_categories})
 
 def contact(request):
     if request.method == 'POST':
@@ -97,9 +108,11 @@ def contact(request):
     else:
         form = ContactModelForm()
         
+    modal_categories = Category.objects.all()
     return render(request, 'contact.html', {
         'form': form,
-        'RECAPTCHA_SITE_KEY': getattr(settings, 'RECAPTCHA_SITE_KEY', '')
+        'RECAPTCHA_SITE_KEY': getattr(settings, 'RECAPTCHA_SITE_KEY', ''),
+        'modal_categories': modal_categories
     })
 
 
@@ -118,7 +131,8 @@ def booking(request):
     else:
         form = BookingForm()
 
-    return render(request, 'booking.html', {'form': form, 'categories': categories, 'districts': districts})
+    modal_categories = Category.objects.all()
+    return render(request, 'booking.html', {'form': form, 'categories': categories, 'districts': districts, 'modal_categories': modal_categories})
 
 
 

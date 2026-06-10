@@ -274,7 +274,9 @@
                         
                                 <!-- Submit -->
                                 <div class="col-12">
-                                    <button class="btn text-white w-100 py-3" style="background: linear-gradient(100deg, #1B4332, #2D6A4F, #1B4332);" type="submit">Book Now</button>
+                                    <button class="btn text-white w-100 py-3" style="background: linear-gradient(100deg, #1B4332, #2D6A4F, #1B4332);" type="button" id="bookingPageWhatsApp">
+                                        <i class="fab fa-whatsapp me-2"></i> Send Enquiry via WhatsApp
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -337,6 +339,61 @@
 
 
         </script>
+
+<script>
+document.getElementById('bookingPageWhatsApp').addEventListener('click', function () {
+    var name = document.getElementById('name').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var startDate = document.getElementById('start_date').value;
+    var endDate = document.getElementById('end_date').value;
+    var adults = document.getElementById('adults').value.trim();
+    var children = document.getElementById('children').value.trim() || '0';
+    var special = document.getElementById('message').value.trim();
+
+    var categorySelect = document.getElementById('packageCategory');
+    var packageSelect = document.getElementById('relatedPackages');
+    var citySelect = document.getElementById('city');
+    var propertySelect = document.getElementById('properties');
+
+    var categoryText = categorySelect.options[categorySelect.selectedIndex].text;
+    var packageText = packageSelect.options[packageSelect.selectedIndex].text;
+    var cityText = citySelect.options[citySelect.selectedIndex].text;
+    var propertyText = propertySelect.options[propertySelect.selectedIndex].text;
+
+    if (!name || !phone || !startDate || !endDate || !adults) {
+        alert('Please fill in Name, Phone, Start Date, End Date, and Adults before sending.');
+        return;
+    }
+
+    var message = "Hello Kerala Tours Planner! I'd like to make a booking enquiry.\n\n"
+        + "Name: " + name + "\n"
+        + "Phone: " + phone + "\n"
+        + "Email: " + (email || 'Not provided') + "\n"
+        + "Travel Dates: " + startDate + " to " + endDate + "\n"
+        + "Adults: " + adults + "\n"
+        + "Children: " + children + "\n";
+
+    if (categorySelect.value) {
+        message += "Package Type: " + categoryText + "\n";
+    }
+    if (packageSelect.value) {
+        message += "Selected Package: " + packageText + "\n";
+    }
+    if (citySelect.value) {
+        message += "City: " + cityText + "\n";
+    }
+    if (propertySelect.value) {
+        message += "Property: " + propertyText + "\n";
+    }
+    if (special) {
+        message += "Special Requests: " + special + "\n";
+    }
+
+    var whatsappURL = "https://wa.me/919446766322?text=" + encodeURIComponent(message);
+    window.open(whatsappURL, '_blank');
+});
+</script>
         
         
 
